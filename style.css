@@ -1,0 +1,11 @@
+p {
+    font-style: italic;
+   font-family: 'Times New Roman', Times, serif;
+   color: blue;
+
+}
+div {
+    background-color: rgb(228, 228, 231);
+    max-width: fit-content;
+    max-height: 35px;
+}
