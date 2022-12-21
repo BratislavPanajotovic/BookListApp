@@ -19,7 +19,7 @@ class UI {
             {
                 title: 'Book 2',
                 author:'Isidorakis',
-                isbn:'10',
+                isbn:10,
             }
         ]
         const books = StoredBooks;
@@ -29,6 +29,7 @@ class UI {
     }
 
     static addBookToList(book) {
+
         const list = document.querySelector('#book-list');
 
         const row = document.createElement('tr');
@@ -36,31 +37,54 @@ class UI {
         row.innerHTML = `
         
         <td>${book.title}</td>
-        <td>${book.title}</td>
-        <td>${book.title}</td>
-        <td><a href="#" class=:btn btn-danger btn-sm delete">X</a></td>
+        <td>${book.author}</td>
+        <td>${book.isbn}</td>
+        <td><a href="#" class="btn btn-danger btn-sm delete ">X</a></td>
 
         `;
 
         list.appendChild(row);
     }
+
+    static deleteBook (el) {
+        if(el.classList.contains('delete')) {
+            el.parentElement.parentElement.remove();
+        }
+    }
+
+    static clearFields(){
+        
+        document.querySelector('title').value= '';
+        document.querySelector('author').value= '';
+        document.querySelector('isbn').value= '';
+    }
 }
 // Store Class: Handles Storage
 
 // Event: Display books
-document.addEventListener("DOMContentLoaded", UI.deisplayBooks);
+document.addEventListener('DOMContentLoaded', UI.displayBooks);
 
 // Event: Add a book
-document.querySelector('book-form').addEventListener('submit', (e)=> {
+document.querySelector('#book-form').addEventListener('submit', (e) => {
+    e.preventDefault();
     // Get form values
-    const title = document.querySelector('title').value;
-    const author = document.querySelector('author').value;
-    const isbn  = document.querySelector('isbn').value;
+    const title = document.querySelector('#title').value;
+    const author = document.querySelector('#author').value;
+    const isbn  = document.querySelector('#isbn').value;
 
     // Instatiate book
-    cnost book = new Book(title,author,isbn);
+    const book = new Book(title,author,isbn);
 
     // Add book to UI
     UI.addBookToList(book);
+
+    UI.clearFields();
 });
 // Event: Remove a book
+document.querySelector('#book-list').addEventListener('click', (e) => {
+
+UI.deleteBook(e.target);
+
+});
+
+
