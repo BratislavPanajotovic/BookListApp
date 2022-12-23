@@ -33,14 +33,14 @@ class UI {
         list.appendChild(row);
     }
 
-    static deleteBook (el) {
+    static deleteBook(el) {
         if(el.classList.contains('delete')) {
             el.parentElement.parentElement.remove();
         }
     }
     static showAlert(message, className) {
         const div = document.createElement('div');
-        div.className = `alert ${className}`;
+        div.className = `alert alert-${className}`;
         div.appendChild(document.createTextNode(message));
         const container = document.querySelector('.container');
         const form = document.querySelector('#book-form');
@@ -51,9 +51,9 @@ class UI {
 
     static clearFields(){
         
-        document.querySelector('title').value= '';
-        document.querySelector('author').value= '';
-        document.querySelector('isbn').value= '';
+        document.querySelector('#title').value= '';
+        document.querySelector('#author').value= '';
+        document.querySelector('#isbn').value= '';
     }
 }
 // Store Class: Handles Storage
@@ -65,6 +65,7 @@ class Store{
         } else {
             books = JSON.parse(localStorage.getItem('books'));
         }
+        return books;
     }
     static addBook(book){
         const books = Store.getBooks();
@@ -120,10 +121,10 @@ document.querySelector('#book-list').addEventListener('click', (e) => {
 
 UI.deleteBook(e.target);
 
-Store.removeBook(e.target.parentElement).previousElementSibling.textContent;
+Store.removeBook(e.target.parentElement.previousElementSibling.textContent);
 
 // Show success message
-UI.showAlert('Book Removed', 'success');
+UI.showAlert('Book Removed', 'danger');
 
 });
 
