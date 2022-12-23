@@ -1,14 +1,14 @@
 // Book class: Represents a Book
 class Book {
-    constructor(title, author, isbn) {
+    constructor(title, author, isbn) {  // Sta je constructor, sta radi this. ?
       this.title = title;
-      this.author=author;
-      this.isbn=isbn;   
+      this.author = author;
+      this.isbn = isbn;   
     }
 }
-// UI Class: Handle UI Taskas
+// UI Class: Handle UI Tasks
 class UI {
-    static displayBooks() {
+    static displayBooks() { // Sta je static , sta je => ?
        
         const books = Store.getBooks();
 
@@ -16,13 +16,15 @@ class UI {
 
     }
 
-    static addBookToList(book) {
+    static addBookToList(book) { // UI kreacija knjige
 
-        const list = document.querySelector('#book-list');
+        const list = document.querySelector('#book-list'); // Konstanta 'list' i selektovali smo listu sa id-em 'book-list' ;
 
-        const row = document.createElement('tr');
+        const row = document.createElement('tr'); // Zasto smo kreirali 'tr' ?
 
-        row.innerHTML = `
+                                                         /* Pretpostavljam da u red dodajemo ono sto iscitavamo iz innerHTML-a , preko 
+                                                         book.title(author,isbn) => sto ne znam sta predstavlja?*/
+        row.innerHTML = `    
         
         <td>${book.title}</td>
         <td>${book.author}</td>
@@ -34,15 +36,15 @@ class UI {
     }
 
     static deleteBook(el) {
-        if(el.classList.contains('delete')) {
+        if(el.classList.contains('delete')) {  /* Ako elemenat iz classList(?) sadrzi 'delete' izbrisi parent elemenat parent elementa*/ 
             el.parentElement.parentElement.remove();
         }
     }
     static showAlert(message, className) {
         const div = document.createElement('div');
-        div.className = `alert alert-${className}`;
-        div.appendChild(document.createTextNode(message));
-        const container = document.querySelector('.container');
+        div.className = `alert alert-${className}`; /*Sta radi ovaj dolar fckn? */
+        div.appendChild(document.createTextNode(message)); /*Div-u dodeljujemo message kao child */
+        const container = document.querySelector('.container'); 
         const form = document.querySelector('#book-form');
         container.insertBefore(div, form);
         // Vanish in 3 sec
@@ -77,6 +79,7 @@ class Store{
 
 
     static removeBook(isbn){
+        const out = isbn.toLocalString();
         const books = Store.getBooks();
 
         books.forEach((book, index) => {
