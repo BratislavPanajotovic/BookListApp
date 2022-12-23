@@ -12,8 +12,7 @@
 
   <body>  
 
-  <div class="container mt-4"> 
-     
+  <div class = "container mt-4"> 
       <h1 class="display-4"> 
         <i class="fas fa-book-open text-primary">   
         </i> My<span class="text-primary">Book</span>List
@@ -27,35 +26,35 @@
          </div>
 
          <div class="form-group">
-            <label for="title">Author</label>
+            <label for="author">Author</label>
             <input type="text" id="author" class="form-control">  
           </div>
 
           <div class="form-group">
-            <label for="title">ISBN#</label>
-            <input type="text" id="isbn" class="form-control"> 
+            <label for="isbn">ISBN#</label>
+            <input type="number" const out = isbn.toLocalString(); id="isbn" class="form-control"> 
           </div>
-  </div>
 
-  <input type="submit" value="Add Book" class="btn btn-primary btn-block mt-2">
+         <input type="submit" value="Add Book" class="btn btn-primary btn-block mt-2">
  
-</form>
+     </form>
 
- <table class="table table-stripe">
+         <table class="table table-stripe">
+           <thead>
+                  <tr>
+                    
+                <th>Title</th>
+                <th>Author</th>
+                <th>ISBN#</th>
+                <th></th>
 
-  
-  <thead>
-      <tr>
-     <th>Title</th>
-     <th>Author</th>
-     <th>ISBN#</th>
-     <th></th>
-      </tr>
-  </thead>
-  <tbody id="book-list"></tbody>
+                 </tr>
+            </thead>
+                <tbody id="book-list"></tbody>
 
- </table>
-    </div>
+        </table>
+    
+ </div>
 
 	  <script src="main.js"></script>
     <script src="https://kit.fontawesome.com/0535512808.js" crossorigin="anonymous"> </script>
